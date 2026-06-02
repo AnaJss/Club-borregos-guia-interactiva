@@ -1,39 +1,762 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0D1B2A">
+<title>Club Borregos · Reinscripciones 2026</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-.wrap{padding:1.25rem 0;font-family:var(--font-sans,sans-serif)}
-.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
-.logo-circle{width:42px;height:42px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:20px}
-.brand{font-size:15px;font-weight:500;color:var(--color-text-primary)}
-.brand-sub{font-size:12px;color:var(--color-text-secondary)}
-.q-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-secondary);margin-bottom:10px}
-.opt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:1.25rem}
-.opt-btn{padding:12px 10px;border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;text-align:center;transition:all .15s;color:var(--color-text-primary)}
-.opt-btn:hover{background:var(--color-background-secondary)}
-.opt-btn.selected{border:2px solid var(--color-border-info);background:var(--color-background-info)}
-.opt-btn.selected .ob-title{color:var(--color-text-info)}
-.opt-btn.selected .ob-sub{color:var(--color-text-info);opacity:.8}
-.ob-icon{font-size:22px;margin-bottom:4px}
-.ob-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
-.ob-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
-.result-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1rem}
-.rc-header{padding:12px 14px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between}
-.rc-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
-.rc-total{font-size:13px;color:var(--color-text-secondary)}
-.rc-total strong{font-size:16px;font-weight:500;color:var(--color-text-primary)}
-.step-list{padding:10px 0}
-.step-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--color-border-tertiary)}
-.step-item:last-child{border-bottom:none}
-.step-dot{width:28px;height:28px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--color-text-secondary);flex-shrink:0;margin-top:2px}
-.step-dot.highlight{background:var(--color-background-success);border-color:var(--color-border-success);color:var(--color-text-success)}
-.step-dot.warn{background:var(--color-background-warning);border-color:var(--color-border-warning);color:var(--color-text-warning)}
-.step-date{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary);margin-bottom:2px}
-.step-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
-.step-amount{font-size:13px;color:var(--color-text-secondary)}
-.step-amount strong{color:var(--color-text-primary)}
-.badge-promo{display:inline-block;font-size:11px;font-weight:500;padding:2px 7px;border-radius:10px;background:var(--color-background-success);color:var(--color-text-success);margin-left:5px;vertical-align:middle}
-.badge-opt{display:inline-block;font-size:11px;font-weight:500;padding:2px 7px;border-radius:10px;background:var(--color-background-warning);color:var(--color-text-warning);margin-left:5px;vertical-align:middle}
-.asueto-row{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--color-background-warning);border-radius:var(--border-radius-md);margin-bottom:6px;font-size:12px;color:var(--color-text-warning)}
+  :root {
+    --bg: #0D1B2A;
+    --bg2: #132234;
+    --bg3: #1a2e45;
+    --gold: #C8973A;
+    --gold-light: #F0B84A;
+    --gold-dim: rgba(200,151,58,0.15);
+    --gold-border: rgba(200,151,58,0.35);
+    --blue: #5AA0FF;
+    --blue-dim: rgba(90,160,255,0.12);
+    --blue-border: rgba(90,160,255,0.3);
+    --green: #34C759;
+    --green-dim: rgba(52,199,89,0.12);
+    --green-border: rgba(52,199,89,0.3);
+    --amber: #FFB41E;
+    --amber-dim: rgba(255,180,30,0.1);
+    --amber-border: rgba(255,180,30,0.25);
+    --red: #FF6060;
+    --red-dim: rgba(255,96,96,0.1);
+    --white: #fff;
+    --t1: rgba(255,255,255,0.92);
+    --t2: rgba(255,255,255,0.55);
+    --t3: rgba(255,255,255,0.3);
+    --border: rgba(255,255,255,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--t1);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── SPLASH SCREEN ── */
+  #splash {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px 32px;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  #splash.out { opacity: 0; transform: scale(.97); pointer-events: none; }
+
+  .splash-logo {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 800; color: var(--bg);
+    margin-bottom: 24px;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(200,151,58,0.4); }
+    50% { box-shadow: 0 0 0 14px rgba(200,151,58,0); }
+  }
+  .splash-title { font-size: 28px; font-weight: 800; color: var(--white); text-align: center; line-height: 1.2; margin-bottom: 8px; }
+  .splash-sub { font-size: 15px; color: var(--t2); text-align: center; margin-bottom: 48px; }
+  .splash-btn {
+    width: 100%; max-width: 320px;
+    background: var(--gold); color: var(--bg);
+    border: none; border-radius: 50px;
+    font-size: 16px; font-weight: 700;
+    padding: 17px 32px;
+    cursor: pointer;
+    transition: transform .15s, opacity .15s;
+  }
+  .splash-btn:active { transform: scale(.97); opacity: .85; }
+  .splash-note { margin-top: 20px; font-size: 13px; color: var(--t3); text-align: center; }
+
+  /* ── MAIN APP ── */
+  #app { display: none; padding-bottom: 40px; }
+  #app.visible { display: block; }
+
+  /* Header */
+  .app-header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .h-logo {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800; color: var(--bg);
+    flex-shrink: 0;
+  }
+  .h-title { font-size: 15px; font-weight: 700; color: var(--white); }
+  .h-sub { font-size: 12px; color: var(--t2); margin-top: 1px; }
+  .h-badge {
+    margin-left: auto;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-border);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 11px; font-weight: 600; color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* Sections */
+  .section { padding: 24px 20px 0; }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--t3); margin-bottom: 12px;
+  }
+
+  /* Date pills scroll */
+  .dates-scroll {
+    display: flex; gap: 10px;
+    overflow-x: auto; padding: 0 20px 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -20px;
+  }
+  .dates-scroll::-webkit-scrollbar { display: none; }
+  .date-card {
+    flex-shrink: 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    min-width: 110px;
+    text-align: center;
+  }
+  .date-card.gold { background: var(--gold-dim); border-color: var(--gold-border); }
+  .date-card.green { background: var(--green-dim); border-color: var(--green-border); }
+  .date-card.red { background: var(--red-dim); border-color: rgba(255,96,96,0.25); }
+  .dc-date { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .date-card.gold .dc-date { color: var(--gold); }
+  .date-card.green .dc-date { color: var(--green); }
+  .date-card.red .dc-date { color: var(--red); }
+  .date-card:not(.gold):not(.green):not(.red) .dc-date { color: var(--t1); }
+  .dc-label { font-size: 11px; color: var(--t2); line-height: 1.4; }
+
+  /* Question card */
+  .q-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .q-title {
+    padding: 18px 20px;
+    font-size: 15px; font-weight: 600; color: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .q-options { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* Option buttons */
+  .opt {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    text-align: left;
+    color: var(--t1);
+    width: 100%;
+  }
+  .opt:active { transform: scale(.98); }
+  .opt.gold-opt { border-color: var(--gold-border); background: var(--gold-dim); }
+  .opt.blue-opt { border-color: var(--blue-border); background: var(--blue-dim); }
+  .opt.selected-gold {
+    border-color: var(--gold);
+    background: rgba(200,151,58,0.22);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .opt.selected-blue {
+    border-color: var(--blue);
+    background: rgba(90,160,255,0.2);
+    box-shadow: 0 0 0 1px var(--blue);
+  }
+  .opt-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+  }
+  .opt.selected-gold .opt-icon { background: rgba(200,151,58,0.2); }
+  .opt.selected-blue .opt-icon { background: rgba(90,160,255,0.15); }
+  .opt-text { flex: 1; }
+  .opt-main { font-size: 14px; font-weight: 600; color: var(--white); }
+  .opt-sub { font-size: 12px; color: var(--t2); margin-top: 2px; }
+  .opt-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 12px;
+    transition: all .2s;
+  }
+  .opt.selected-gold .opt-check { background: var(--gold); border-color: var(--gold); }
+  .opt.selected-blue .opt-check { background: var(--blue); border-color: var(--blue); }
+
+  /* Result panel */
+  .result-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .45s cubic-bezier(0.4,0,0.2,1), opacity .3s ease;
+    opacity: 0;
+  }
+  .result-panel.open {
+    max-height: 1200px;
+    opacity: 1;
+  }
+
+  /* Plan card */
+  .plan-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+  }
+  .plan-card.gold-plan { border-color: var(--gold-border); }
+  .plan-card.blue-plan { border-color: var(--blue-border); }
+
+  .plan-header {
+    padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .gold-plan .plan-header { background: rgba(200,151,58,0.12); }
+  .blue-plan .plan-header { background: rgba(90,160,255,0.1); }
+  .ph-tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+  .gold-plan .ph-tag { color: var(--gold); }
+  .blue-plan .ph-tag { color: var(--blue); }
+  .ph-total { font-size: 12px; color: var(--t2); text-align: right; }
+  .ph-total strong { font-size: 18px; font-weight: 700; color: var(--white); display: block; }
+
+  /* Steps */
+  .plan-steps { background: var(--bg2); }
+  .step {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .sn-gold { background: var(--gold); color: var(--bg); }
+  .sn-blue { background: var(--blue); color: var(--bg); }
+  .sn-gray { background: rgba(255,255,255,0.1); color: var(--t2); }
+  .sn-star { background: rgba(200,151,58,0.2); color: var(--gold); font-size: 14px; }
+  .step-body { flex: 1; }
+  .step-when { font-size: 11px; color: var(--t3); margin-bottom: 3px; letter-spacing: .03em; }
+  .step-what { font-size: 14px; color: var(--t1); line-height: 1.4; }
+  .step-what strong { color: var(--white); font-weight: 700; }
+  .step-what .amount { font-size: 20px; font-weight: 800; color: var(--white); display: block; margin-top: 2px; }
+
+  .promo-badge {
+    display: inline-block;
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 20px;
+    margin-left: 5px; vertical-align: middle;
+    letter-spacing: .05em;
+  }
+  .opt-badge {
+    display: inline-block;
+    background: var(--amber-dim);
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 20px;
+    margin-left: 5px; vertical-align: middle;
+  }
+
+  /* Info box */
+  .info-box {
+    margin: 0 0 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 13px; color: var(--t2); line-height: 1.6;
+  }
+  .info-box strong { color: var(--t1); }
+  .info-box .ib-icon { font-size: 16px; margin-right: 6px; vertical-align: -2px; }
+
+  /* Asuetos */
+  .asueto {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--amber-dim);
+    border: 1px solid var(--amber-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .asueto-flag { font-size: 28px; flex-shrink: 0; }
+  .asueto-date { font-size: 14px; font-weight: 700; color: var(--amber); }
+  .asueto-name { font-size: 12px; color: var(--t2); margin-top: 2px; }
+
+  /* Monthly pills */
+  .months-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 8px; margin-bottom: 14px;
+  }
+  .month-pill {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .mp-m { font-size: 12px; font-weight: 600; color: var(--t1); margin-bottom: 3px; }
+  .mp-d { font-size: 11px; color: var(--t3); }
+
+  /* Bottom nav feel */
+  .bottom-spacer { height: 20px; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeUp .35s ease forwards; }
+
+  /* Sub question */
+  .sub-q {
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, opacity .25s ease;
+    opacity: 0;
+  }
+  .sub-q.open { max-height: 300px; opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-logo">CB</div>
+  <div class="splash-title">Club Borregos</div>
+  <div class="splash-sub">Guía de reinscripción<br>Semestre Agosto–Diciembre 2026</div>
+  <button class="splash-btn" onclick="startApp()">Ver mi guía personalizada →</button>
+  <div class="splash-note">Toca para conocer fechas, cuotas y pasos según tu caso</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- Header -->
+  <div class="app-header">
+    <div class="h-logo">CB</div>
+    <div>
+      <div class="h-title">Club Borregos</div>
+      <div class="h-sub">Tec de Monterrey</div>
+    </div>
+    <div class="h-badge">Ago–Dic 2026</div>
+  </div>
+
+  <!-- Dates -->
+  <div class="section">
+    <div class="section-label">Fechas clave</div>
+  </div>
+  <div class="dates-scroll">
+    <div style="width:8px;flex-shrink:0"></div>
+    <div class="date-card red">
+      <div class="dc-date">30 jun</div>
+      <div class="dc-label">Fin ciclo<br>2025–26</div>
+    </div>
+    <div class="date-card gold">
+      <div class="dc-date">Todo julio</div>
+      <div class="dc-label">Reinscripciones<br>&amp; promo</div>
+    </div>
+    <div class="date-card">
+      <div class="dc-date">1–15 ago</div>
+      <div class="dc-label">Nuevos<br>ingresos</div>
+    </div>
+    <div class="date-card green">
+      <div class="dc-date">17 ago</div>
+      <div class="dc-label">Inicio del<br>semestre</div>
+    </div>
+    <div class="date-card red">
+      <div class="dc-date">10 dic</div>
+      <div class="dc-label">Fin del<br>semestre</div>
+    </div>
+    <div style="width:8px;flex-shrink:0"></div>
+  </div>
+
+  <!-- Q1: tipo -->
+  <div class="section" style="padding-top:28px;">
+    <div class="q-card">
+      <div class="q-title">¿Cuál es tu caso?</div>
+      <div class="q-options">
+        <button class="opt gold-opt" id="btn-reingreso" onclick="selectTipo('reingreso')">
+          <div class="opt-icon">🔄</div>
+          <div class="opt-text">
+            <div class="opt-main">Ya soy miembro</div>
+            <div class="opt-sub">Regreso al siguiente semestre</div>
+          </div>
+          <div class="opt-check" id="chk-reingreso">✓</div>
+        </button>
+        <button class="opt blue-opt" id="btn-nuevo" onclick="selectTipo('nuevo')">
+          <div class="opt-icon">⭐</div>
+          <div class="opt-text">
+            <div class="opt-main">Soy nuevo</div>
+            <div class="opt-sub">Me uno por primera vez</div>
+          </div>
+          <div class="opt-check" id="chk-nuevo">✓</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-question: uniforme (solo para reingreso) -->
+    <div class="sub-q" id="sub-uniforme">
+      <div class="q-card" style="margin-bottom:14px;">
+        <div class="q-title">¿Necesitas uniforme nuevo?</div>
+        <div class="q-options">
+          <button class="opt gold-opt" id="btn-no-uni" onclick="selectUni('no')">
+            <div class="opt-icon">👕</div>
+            <div class="opt-text">
+              <div class="opt-main">No necesito</div>
+              <div class="opt-sub">Conservo mi uniforme actual</div>
+            </div>
+            <div class="opt-check" id="chk-no-uni">✓</div>
+          </button>
+          <button class="opt gold-opt" id="btn-si-uni" onclick="selectUni('si')">
+            <div class="opt-icon">🛍️</div>
+            <div class="opt-text">
+              <div class="opt-main">Sí necesito uniforme</div>
+              <div class="opt-sub">Quiero incluirlo en mi pago</div>
+            </div>
+            <div class="opt-check" id="chk-si-uni">✓</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT: reingreso sin uniforme -->
+    <div class="result-panel" id="result-reingreso-no">
+      <div class="plan-card gold-plan animate-in">
+        <div class="plan-header">
+          <div>
+            <div class="ph-tag">Miembro actual · sin uniforme</div>
+          </div>
+          <div class="ph-total">
+            <strong>$600</strong>
+            aparta tu lugar
+          </div>
+        </div>
+        <div class="plan-steps">
+          <div class="step">
+            <div class="step-num sn-gold">1</div>
+            <div class="step-body">
+              <div class="step-when">Todo julio</div>
+              <div class="step-what">
+                Reinscripción — aparta tu lugar
+                <span class="amount">$600</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-star">★</div>
+            <div class="step-body">
+              <div class="step-when">Todo julio · oferta única</div>
+              <div class="step-what">
+                Semestre completo de una vez <span class="promo-badge">PROMO</span>
+                <span class="amount">$4,000</span>
+                <span style="font-size:12px;color:var(--t3);display:block;margin-top:2px;">Sin pagos mensuales — solo válido en julio</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">2</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de agosto</div>
+              <div class="step-what">Mensualidad 1</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">3</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de septiembre</div>
+              <div class="step-what">Mensualidad 2</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">4</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de octubre</div>
+              <div class="step-what">Mensualidad 3</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">5</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de noviembre</div>
+              <div class="step-what">Mensualidad 4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        💡 <strong>Consejo:</strong> Si pagas el semestre completo en julio por <strong>$4,000</strong> ya no tienes que recordar pagos mensuales y garantizas tu lugar con anticipación.
+      </div>
+    </div>
+
+    <!-- RESULT: reingreso con uniforme -->
+    <div class="result-panel" id="result-reingreso-si">
+      <div class="plan-card gold-plan animate-in">
+        <div class="plan-header">
+          <div>
+            <div class="ph-tag">Miembro actual · con uniforme</div>
+          </div>
+          <div class="ph-total">
+            <strong>$1,000</strong>
+            en julio
+          </div>
+        </div>
+        <div class="plan-steps">
+          <div class="step">
+            <div class="step-num sn-gold">1</div>
+            <div class="step-body">
+              <div class="step-when">Todo julio</div>
+              <div class="step-what">
+                Reinscripción con uniforme <span class="opt-badge">INCLUYE UNIFORME</span>
+                <span class="amount">$1,000</span>
+                <span style="font-size:12px;color:var(--t3);display:block;margin-top:2px;">Aparta lugar + uniforme en un solo pago</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">2</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de agosto</div>
+              <div class="step-what">Mensualidad 1</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">3</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de septiembre</div>
+              <div class="step-what">Mensualidad 2</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">4</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de octubre</div>
+              <div class="step-what">Mensualidad 3</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">5</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de noviembre</div>
+              <div class="step-what">Mensualidad 4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        💡 <strong>Tip:</strong> Si además quieres cubrir todo el semestre de una sola vez, en julio puedes pagar los <strong>$1,000</strong> del uniforme/inscripción <em>y además</em> los <strong>$4,000</strong> de la promo semestre completo.
+      </div>
+    </div>
+
+    <!-- RESULT: nuevo -->
+    <div class="result-panel" id="result-nuevo">
+      <div class="plan-card blue-plan animate-in">
+        <div class="plan-header">
+          <div>
+            <div class="ph-tag">Nuevo ingreso</div>
+          </div>
+          <div class="ph-total">
+            <strong>$2,000</strong>
+            al inscribirse
+          </div>
+        </div>
+        <div class="plan-steps">
+          <div class="step">
+            <div class="step-num sn-blue">1</div>
+            <div class="step-body">
+              <div class="step-when">1 al 15 de agosto</div>
+              <div class="step-what">
+                Inscripción + Mensualidad 1 <span class="opt-badge">INCLUYE UNIFORME</span>
+                <span class="amount">$2,000</span>
+                <span style="font-size:12px;color:var(--t3);display:block;margin-top:2px;">Inscripción $1,000 + Mensualidad 1 $1,000 · uniforme incluido</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">2</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de septiembre</div>
+              <div class="step-what">Mensualidad 2</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">3</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de octubre</div>
+              <div class="step-what">Mensualidad 3</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-gray">4</div>
+            <div class="step-body">
+              <div class="step-when">1–5 de noviembre</div>
+              <div class="step-what">Mensualidad 4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        📅 Las inscripciones abren el <strong>1 de agosto</strong>. El semestre arranca el <strong>17 de agosto</strong> y termina el <strong>10 de diciembre de 2026</strong>.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Mensualidades -->
+  <div class="section" style="padding-top:24px;">
+    <div class="section-label">Mensualidades · del 1 al 5 de cada mes</div>
+    <div class="months-row">
+      <div class="month-pill"><div class="mp-m">Agosto</div><div class="mp-d">1–5 ago</div></div>
+      <div class="month-pill"><div class="mp-m">Sept.</div><div class="mp-d">1–5 sep</div></div>
+      <div class="month-pill"><div class="mp-m">Octubre</div><div class="mp-d">1–5 oct</div></div>
+      <div class="month-pill"><div class="mp-m">Nov.</div><div class="mp-d">1–5 nov</div></div>
+    </div>
+  </div>
+
+  <!-- Asuetos -->
+  <div class="section" style="padding-top:24px;">
+    <div class="section-label">Asuetos obligatorios — sin actividades</div>
+    <div class="asueto">
+      <div class="asueto-flag">🇲🇽</div>
+      <div>
+        <div class="asueto-date">Miércoles 16 de septiembre</div>
+        <div class="asueto-name">Día de la Independencia</div>
+      </div>
+    </div>
+    <div class="asueto">
+      <div class="asueto-flag">🇲🇽</div>
+      <div>
+        <div class="asueto-date">Lunes 16 de noviembre</div>
+        <div class="asueto-name">Día de la Revolución Mexicana</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-spacer"></div>
+
+</div>
+
+<script>
+  function startApp() {
+    var s = document.getElementById('splash');
+    var a = document.getElementById('app');
+    s.classList.add('out');
+    setTimeout(function() {
+      s.style.display = 'none';
+      a.classList.add('visible');
+    }, 400);
+  }
+
+  var tipo = null, uni = null;
+
+  function clearChecks(ids) {
+    ids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) { el.style.background = ''; el.style.borderColor = ''; el.style.color = ''; }
+    });
+  }
+
+  function selectTipo(t) {
+    tipo = t; uni = null;
+
+    var btnR = document.getElementById('btn-reingreso');
+    var btnN = document.getElementById('btn-nuevo');
+    var chkR = document.getElementById('chk-reingreso');
+    var chkN = document.getElementById('chk-nuevo');
+
+    btnR.className = 'opt gold-opt' + (t==='reingreso' ? ' selected-gold' : '');
+    btnN.className = 'opt blue-opt' + (t==='nuevo' ? ' selected-blue' : '');
+
+    chkR.style.background = t==='reingreso' ? 'var(--gold)' : '';
+    chkR.style.borderColor = t==='reingreso' ? 'var(--gold)' : '';
+    chkN.style.background = t==='nuevo' ? 'var(--blue)' : '';
+    chkN.style.borderColor = t==='nuevo' ? 'var(--blue)' : '';
+
+    document.getElementById('sub-uniforme').className = 'sub-q' + (t==='reingreso' ? ' open' : '');
+
+    closeAll();
+
+    document.getElementById('btn-no-uni').className = 'opt gold-opt';
+    document.getElementById('btn-si-uni').className = 'opt gold-opt';
+    document.getElementById('chk-no-uni').style.background = '';
+    document.getElementById('chk-no-uni').style.borderColor = '';
+    document.getElementById('chk-si-uni').style.background = '';
+    document.getElementById('chk-si-uni').style.borderColor = '';
+
+    if (t === 'nuevo') {
+      setTimeout(function() { openPanel('result-nuevo'); }, 100);
+    }
+  }
+
+  function selectUni(u) {
+    uni = u;
+    var btnNo = document.getElementById('btn-no-uni');
+    var btnSi = document.getElementById('btn-si-uni');
+    var chkNo = document.getElementById('chk-no-uni');
+    var chkSi = document.getElementById('chk-si-uni');
+
+    btnNo.className = 'opt gold-opt' + (u==='no' ? ' selected-gold' : '');
+    btnSi.className = 'opt gold-opt' + (u==='si' ? ' selected-gold' : '');
+    chkNo.style.background = u==='no' ? 'var(--gold)' : '';
+    chkNo.style.borderColor = u==='no' ? 'var(--gold)' : '';
+    chkSi.style.background = u==='si' ? 'var(--gold)' : '';
+    chkSi.style.borderColor = u==='si' ? 'var(--gold)' : '';
+
+    closeAll();
+    setTimeout(function() {
+      openPanel(u === 'no' ? 'result-reingreso-no' : 'result-reingreso-si');
+    }, 80);
+  }
+
+  function closeAll() {
+    ['result-reingreso-no','result-reingreso-si','result-nuevo'].forEach(function(id) {
+      document.getElementById(id).className = 'result-panel';
+    });
+  }
+
+  function openPanel(id) {
+    var el = document.getElementById(id);
+    el.className = 'result-panel open';
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  }
+</script>
+</body>
+</html>
 .note-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:1rem}
 .hidden{display:none}
 </style>
