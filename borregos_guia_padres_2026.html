@@ -1,0 +1,274 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:1.25rem 0;font-family:var(--font-sans,sans-serif)}
+.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
+.logo-circle{width:42px;height:42px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:20px}
+.brand{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.brand-sub{font-size:12px;color:var(--color-text-secondary)}
+.q-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-secondary);margin-bottom:10px}
+.opt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:1.25rem}
+.opt-btn{padding:12px 10px;border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;text-align:center;transition:all .15s;color:var(--color-text-primary)}
+.opt-btn:hover{background:var(--color-background-secondary)}
+.opt-btn.selected{border:2px solid var(--color-border-info);background:var(--color-background-info)}
+.opt-btn.selected .ob-title{color:var(--color-text-info)}
+.opt-btn.selected .ob-sub{color:var(--color-text-info);opacity:.8}
+.ob-icon{font-size:22px;margin-bottom:4px}
+.ob-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.ob-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.result-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1rem}
+.rc-header{padding:12px 14px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between}
+.rc-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.rc-total{font-size:13px;color:var(--color-text-secondary)}
+.rc-total strong{font-size:16px;font-weight:500;color:var(--color-text-primary)}
+.step-list{padding:10px 0}
+.step-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.step-item:last-child{border-bottom:none}
+.step-dot{width:28px;height:28px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--color-text-secondary);flex-shrink:0;margin-top:2px}
+.step-dot.highlight{background:var(--color-background-success);border-color:var(--color-border-success);color:var(--color-text-success)}
+.step-dot.warn{background:var(--color-background-warning);border-color:var(--color-border-warning);color:var(--color-text-warning)}
+.step-date{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary);margin-bottom:2px}
+.step-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.step-amount{font-size:13px;color:var(--color-text-secondary)}
+.step-amount strong{color:var(--color-text-primary)}
+.badge-promo{display:inline-block;font-size:11px;font-weight:500;padding:2px 7px;border-radius:10px;background:var(--color-background-success);color:var(--color-text-success);margin-left:5px;vertical-align:middle}
+.badge-opt{display:inline-block;font-size:11px;font-weight:500;padding:2px 7px;border-radius:10px;background:var(--color-background-warning);color:var(--color-text-warning);margin-left:5px;vertical-align:middle}
+.asueto-row{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--color-background-warning);border-radius:var(--border-radius-md);margin-bottom:6px;font-size:12px;color:var(--color-text-warning)}
+.note-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:1rem}
+.hidden{display:none}
+</style>
+
+<div class="wrap">
+  <div class="logo-row">
+    <div class="logo-circle"><i class="ti ti-trophy" style="font-size:20px;color:var(--color-text-secondary)" aria-hidden="true"></i></div>
+    <div>
+      <div class="brand">Club Borregos</div>
+      <div class="brand-sub">Guía de reinscripción 2026–2027</div>
+    </div>
+  </div>
+
+  <div class="q-label">¿Cuál es tu caso?</div>
+  <div class="opt-grid">
+    <div class="opt-btn" id="btn-reingreso" onclick="select('reingreso')">
+      <div class="ob-icon"><i class="ti ti-rotate-clockwise" aria-hidden="true"></i></div>
+      <div class="ob-title">Ya soy miembro</div>
+      <div class="ob-sub">Regreso al siguiente semestre</div>
+    </div>
+    <div class="opt-btn" id="btn-nuevo" onclick="select('nuevo')">
+      <div class="ob-icon"><i class="ti ti-user-plus" aria-hidden="true"></i></div>
+      <div class="ob-title">Soy nuevo</div>
+      <div class="ob-sub">Me uno por primera vez</div>
+    </div>
+  </div>
+
+  <div id="sub-reingreso" class="hidden">
+    <div class="q-label">¿Necesitas uniforme nuevo?</div>
+    <div class="opt-grid" style="margin-bottom:1.25rem">
+      <div class="opt-btn" id="btn-no-uni" onclick="selectUni('no')">
+        <div class="ob-title">No necesito</div>
+        <div class="ob-sub">Conservo mi uniforme</div>
+      </div>
+      <div class="opt-btn" id="btn-si-uni" onclick="selectUni('si')">
+        <div class="ob-title">Sí necesito</div>
+        <div class="ob-sub">Requiero uniforme nuevo</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="result-reingreso-no" class="hidden">
+    <div class="result-card">
+      <div class="rc-header">
+        <span class="rc-title">Mi plan de pagos</span>
+        <span class="rc-total">Total semestre: <strong>$4,600</strong></span>
+      </div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot highlight">1</div>
+          <div>
+            <div class="step-date">Todo julio</div>
+            <div class="step-title">Reinscripción — aparta tu lugar <span class="badge-promo">Promo disponible</span></div>
+            <div class="step-amount">Opción A: <strong>$600</strong> solo aparta lugar<br>Opción B: <strong>$4,000</strong> cubre semestre completo (ahorro vs pagar mes a mes)</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <div>
+            <div class="step-date">1–5 agosto</div>
+            <div class="step-title">Mensualidad 1</div>
+            <div class="step-amount"><strong>Según cuota mensual</strong> · Solo si no elegiste la promo de semestre completo</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div>
+            <div class="step-date">1–5 septiembre</div>
+            <div class="step-title">Mensualidad 2</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div>
+            <div class="step-date">1–5 octubre</div>
+            <div class="step-title">Mensualidad 3</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <div>
+            <div class="step-date">1–5 noviembre</div>
+            <div class="step-title">Mensualidad 4</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="asuetos-r1"></div>
+    <div id="nota-promo-r1" class="note-box">
+      <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>
+      <strong>Consejo:</strong> Si pagas el semestre completo en julio por $4,000 ya no tienes que hacer pagos mensuales y garantizas tu lugar con anticipación.
+    </div>
+  </div>
+
+  <div id="result-reingreso-si" class="hidden">
+    <div class="result-card">
+      <div class="rc-header">
+        <span class="rc-title">Mi plan de pagos</span>
+        <span class="rc-total">Inscripción: <strong>$1,000</strong></span>
+      </div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot highlight">1</div>
+          <div>
+            <div class="step-date">Todo julio</div>
+            <div class="step-title">Reinscripción con uniforme <span class="badge-opt">Incluye uniforme</span></div>
+            <div class="step-amount"><strong>$1,000</strong> — cubre inscripción + uniforme y aparta tu lugar</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <div>
+            <div class="step-date">1–5 agosto</div>
+            <div class="step-title">Mensualidad 1</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div>
+            <div class="step-date">1–5 septiembre</div>
+            <div class="step-title">Mensualidad 2</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div>
+            <div class="step-date">1–5 octubre</div>
+            <div class="step-title">Mensualidad 3</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <div>
+            <div class="step-date">1–5 noviembre</div>
+            <div class="step-title">Mensualidad 4</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="asuetos-r2"></div>
+    <div class="note-box">
+      <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>
+      <strong>Nota:</strong> Si además quieres pagar el semestre de una vez, en julio puedes hacer ambas cosas: pagar los $1,000 del uniforme/inscripción y los $4,000 de semestre completo.
+    </div>
+  </div>
+
+  <div id="result-nuevo" class="hidden">
+    <div class="result-card">
+      <div class="rc-header">
+        <span class="rc-title">Mi plan de pagos</span>
+        <span class="rc-total">Inscripción: <strong>$1,000</strong></span>
+      </div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot highlight">1</div>
+          <div>
+            <div class="step-date">1–15 agosto</div>
+            <div class="step-title">Inscripción + Mensualidad 1 <span class="badge-opt">Incluye uniforme</span></div>
+            <div class="step-amount"><strong>$1,000</strong> — cubre inscripción, uniforme y tu primer mes</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <div>
+            <div class="step-date">1–5 septiembre</div>
+            <div class="step-title">Mensualidad 2</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div>
+            <div class="step-date">1–5 octubre</div>
+            <div class="step-title">Mensualidad 3</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <div>
+            <div class="step-date">1–5 noviembre</div>
+            <div class="step-title">Mensualidad 4</div>
+            <div class="step-amount">Pago mensual regular</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="asuetos-n"></div>
+    <div class="note-box">
+      <i class="ti ti-calendar-event" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>
+      Las inscripciones abren el <strong>1 de agosto</strong>. El semestre inicia el <strong>17 de agosto</strong> y concluye el <strong>10 de diciembre de 2026</strong>.
+    </div>
+  </div>
+
+</div>
+
+<script>
+var tipo = null, uni = null;
+
+var asuetosHTML = '<div style="margin-bottom:1rem"><div class="q-label" style="margin-bottom:8px">Asuetos del semestre</div><div class="asueto-row"><i class="ti ti-alert-triangle" style="font-size:15px;flex-shrink:0" aria-hidden="true"></i><span><strong>Miércoles 16 de septiembre</strong> — Día de la Independencia (sin actividades)</span></div><div class="asueto-row"><i class="ti ti-alert-triangle" style="font-size:15px;flex-shrink:0" aria-hidden="true"></i><span><strong>Lunes 16 de noviembre</strong> — Día de la Revolución (sin actividades)</span></div></div>';
+
+function select(t) {
+  tipo = t; uni = null;
+  document.getElementById('btn-reingreso').classList.toggle('selected', t==='reingreso');
+  document.getElementById('btn-nuevo').classList.toggle('selected', t==='nuevo');
+  document.getElementById('sub-reingreso').classList.toggle('hidden', t!=='reingreso');
+  document.getElementById('result-reingreso-no').classList.add('hidden');
+  document.getElementById('result-reingreso-si').classList.add('hidden');
+  document.getElementById('result-nuevo').classList.toggle('hidden', t!=='nuevo');
+  if(t==='nuevo') { document.getElementById('asuetos-n').innerHTML = asuetosHTML; }
+  document.getElementById('btn-no-uni') && document.getElementById('btn-no-uni').classList.remove('selected');
+  document.getElementById('btn-si-uni') && document.getElementById('btn-si-uni').classList.remove('selected');
+}
+
+function selectUni(u) {
+  uni = u;
+  document.getElementById('btn-no-uni').classList.toggle('selected', u==='no');
+  document.getElementById('btn-si-uni').classList.toggle('selected', u==='si');
+  var rno = document.getElementById('result-reingreso-no');
+  var rsi = document.getElementById('result-reingreso-si');
+  if(u==='no') {
+    rno.classList.remove('hidden');
+    rsi.classList.add('hidden');
+    document.getElementById('asuetos-r1').innerHTML = asuetosHTML;
+  } else {
+    rsi.classList.remove('hidden');
+    rno.classList.add('hidden');
+    document.getElementById('asuetos-r2').innerHTML = asuetosHTML;
+  }
+}
+</script>
