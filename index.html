@@ -7,16 +7,18 @@
 <title>Club Borregos · Reinscripciones 2026</title>
 <style>
   :root {
-    --bg: #0D1B2A;
-    --bg2: #132234;
-    --bg3: #1a2e45;
+    --bg: #0A0C10;
+    --bg2: #12151C;
+    --bg3: #1C2030;
     --gold: #C8973A;
     --gold-light: #F0B84A;
-    --gold-dim: rgba(200,151,58,0.15);
-    --gold-border: rgba(200,151,58,0.35);
-    --blue: #5AA0FF;
-    --blue-dim: rgba(90,160,255,0.12);
-    --blue-border: rgba(90,160,255,0.3);
+    --gold-dim: rgba(200,151,58,0.12);
+    --gold-border: rgba(200,151,58,0.3);
+    --blue: #003DA5;
+    --blue-light: #1A56C4;
+    --blue-bright: #4A7FE0;
+    --blue-dim: rgba(0,61,165,0.2);
+    --blue-border: rgba(0,61,165,0.45);
     --green: #34C759;
     --green-dim: rgba(52,199,89,0.12);
     --green-border: rgba(52,199,89,0.3);
@@ -56,27 +58,29 @@
   #splash.out { opacity: 0; transform: scale(.97); pointer-events: none; }
 
   .splash-logo {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: var(--gold);
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--bg2);
+    border: 2px solid var(--blue-border);
     display: flex; align-items: center; justify-content: center;
-    font-size: 32px; font-weight: 800; color: var(--bg);
     margin-bottom: 24px;
     animation: pulse 2.5s ease-in-out infinite;
+    overflow: hidden; padding: 12px;
   }
   @keyframes pulse {
-    0%,100% { box-shadow: 0 0 0 0 rgba(200,151,58,0.4); }
-    50% { box-shadow: 0 0 0 14px rgba(200,151,58,0); }
+    0%,100% { box-shadow: 0 0 0 0 rgba(0,61,165,0.5); }
+    50% { box-shadow: 0 0 0 16px rgba(0,61,165,0); }
   }
   .splash-title { font-size: 28px; font-weight: 800; color: var(--white); text-align: center; line-height: 1.2; margin-bottom: 8px; }
   .splash-sub { font-size: 15px; color: var(--t2); text-align: center; margin-bottom: 48px; }
   .splash-btn {
     width: 100%; max-width: 320px;
-    background: var(--gold); color: var(--bg);
+    background: var(--blue); color: var(--white);
     border: none; border-radius: 50px;
     font-size: 16px; font-weight: 700;
     padding: 17px 32px;
     cursor: pointer;
     transition: transform .15s, opacity .15s;
+    box-shadow: 0 8px 28px rgba(0,61,165,0.5);
   }
   .splash-btn:active { transform: scale(.97); opacity: .85; }
   .splash-note { margin-top: 20px; font-size: 13px; color: var(--t3); text-align: center; }
@@ -108,7 +112,7 @@
     border: 1px solid var(--gold-border);
     border-radius: 20px;
     padding: 4px 10px;
-    font-size: 11px; font-weight: 600; color: var(--gold);
+    font-size: 11px; font-weight: 600; color: var(--blue-bright);
     white-space: nowrap;
   }
 
@@ -142,7 +146,7 @@
   .date-card.green { background: var(--green-dim); border-color: var(--green-border); }
   .date-card.red { background: var(--red-dim); border-color: rgba(255,96,96,0.25); }
   .dc-date { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-  .date-card.gold .dc-date { color: var(--gold); }
+  .date-card.gold .dc-date { color: var(--blue-bright); }
   .date-card.green .dc-date { color: var(--green); }
   .date-card.red .dc-date { color: var(--red); }
   .date-card:not(.gold):not(.green):not(.red) .dc-date { color: var(--t1); }
@@ -180,7 +184,7 @@
   .opt.gold-opt { border-color: var(--gold-border); background: var(--gold-dim); }
   .opt.blue-opt { border-color: var(--blue-border); background: var(--blue-dim); }
   .opt.selected-gold {
-    border-color: var(--gold);
+    border-color: var(--blue-bright);
     background: rgba(200,151,58,0.22);
     box-shadow: 0 0 0 1px var(--gold);
   }
@@ -207,7 +211,7 @@
     flex-shrink: 0; font-size: 12px;
     transition: all .2s;
   }
-  .opt.selected-gold .opt-check { background: var(--gold); border-color: var(--gold); }
+  .opt.selected-gold .opt-check { background: var(--gold); border-color: var(--blue-bright); }
   .opt.selected-blue .opt-check { background: var(--blue); border-color: var(--blue); }
 
   /* Result panel */
@@ -242,7 +246,7 @@
     font-size: 11px; font-weight: 700;
     letter-spacing: .08em; text-transform: uppercase;
   }
-  .gold-plan .ph-tag { color: var(--gold); }
+  .gold-plan .ph-tag { color: var(--blue-bright); }
   .blue-plan .ph-tag { color: var(--blue); }
   .ph-total { font-size: 12px; color: var(--t2); text-align: right; }
   .ph-total strong { font-size: 18px; font-weight: 700; color: var(--white); display: block; }
@@ -265,7 +269,7 @@
   .sn-gold { background: var(--gold); color: var(--bg); }
   .sn-blue { background: var(--blue); color: var(--bg); }
   .sn-gray { background: rgba(255,255,255,0.1); color: var(--t2); }
-  .sn-star { background: rgba(200,151,58,0.2); color: var(--gold); font-size: 14px; }
+  .sn-star { background: rgba(200,151,58,0.2); color: var(--blue-bright); font-size: 14px; }
   .step-body { flex: 1; }
   .step-when { font-size: 11px; color: var(--t3); margin-bottom: 3px; letter-spacing: .03em; }
   .step-what { font-size: 14px; color: var(--t1); line-height: 1.4; }
@@ -355,7 +359,7 @@
 
 <!-- SPLASH -->
 <div id="splash">
-  <div class="splash-logo">CB</div>
+  <div class="splash-logo"><img src="logo_blancoClubBorregos.png" alt="Club Borregos" style="width:100%;height:100%;object-fit:contain;"></div>
   <div class="splash-title">Club Borregos</div>
   <div class="splash-sub">Guía de reinscripción<br>Semestre Agosto–Diciembre 2026</div>
   <button class="splash-btn" onclick="startApp()">Ver mi guía personalizada →</button>
@@ -460,7 +464,7 @@
           <div>
             <div class="ph-tag">Miembro actual · sin uniforme</div>
           </div>
-          <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:inline-block;background:var(--gold);color:var(--bg);font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;white-space:nowrap;">Realizar pago →</a>
+          <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:inline-block;background:var(--blue);color:var(--white);font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;white-space:nowrap;">Realizar pago →</a>
         </div>
         <div class="plan-steps">
           <div class="step">
@@ -513,7 +517,7 @@
             </div>
           </div>
           <div class="step" style="justify-content:center;">
-            <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:block;width:100%;background:var(--gold);color:var(--bg);font-size:15px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;text-align:center;">Realizar pago →</a>
+            <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:block;width:100%;background:var(--blue);color:var(--white);font-size:15px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;text-align:center;">Realizar pago →</a>
           </div>
         </div>
       </div>
@@ -530,7 +534,7 @@
           <div>
             <div class="ph-tag">Miembro actual · con uniforme</div>
           </div>
-          <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:inline-block;background:var(--gold);color:var(--bg);font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;white-space:nowrap;">Realizar pago →</a>
+          <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:inline-block;background:var(--blue);color:var(--white);font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;white-space:nowrap;">Realizar pago →</a>
         </div>
         <div class="plan-steps">
           <div class="step">
@@ -573,7 +577,7 @@
             </div>
           </div>
           <div class="step" style="justify-content:center;">
-            <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:block;width:100%;background:var(--gold);color:var(--bg);font-size:15px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;text-align:center;">Realizar pago →</a>
+            <a href="https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5uUG000000HI3lYAG" target="_blank" style="display:block;width:100%;background:var(--blue);color:var(--white);font-size:15px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;text-align:center;">Realizar pago →</a>
           </div>
         </div>
       </div>
@@ -645,7 +649,7 @@
       <div class="month-pill" style="text-align:left;padding:14px 16px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
           <div>
-            <div class="mp-m">Mensualidad 1 · <span style="color:var(--gold);">Septiembre</span></div>
+            <div class="mp-m">Mensualidad 1 · <span style="color:var(--blue-bright);">Septiembre</span></div>
             <div style="font-size:11px;color:var(--t3);margin-top:3px;">Cubre: 17 ago – 13 sep</div>
           </div>
           <div style="text-align:right;flex-shrink:0;">
@@ -657,7 +661,7 @@
       <div class="month-pill" style="text-align:left;padding:14px 16px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
           <div>
-            <div class="mp-m">Mensualidad 2 · <span style="color:var(--gold);">Octubre</span></div>
+            <div class="mp-m">Mensualidad 2 · <span style="color:var(--blue-bright);">Octubre</span></div>
             <div style="font-size:11px;color:var(--t3);margin-top:3px;">Cubre: 14 sep – 11 oct</div>
           </div>
           <div style="text-align:right;flex-shrink:0;">
@@ -669,7 +673,7 @@
       <div class="month-pill" style="text-align:left;padding:14px 16px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
           <div>
-            <div class="mp-m">Mensualidad 3 · <span style="color:var(--gold);">Noviembre</span></div>
+            <div class="mp-m">Mensualidad 3 · <span style="color:var(--blue-bright);">Noviembre</span></div>
             <div style="font-size:11px;color:var(--t3);margin-top:3px;">Cubre: 12 oct – 15 nov</div>
           </div>
           <div style="text-align:right;flex-shrink:0;">
@@ -681,7 +685,7 @@
       <div class="month-pill" style="text-align:left;padding:14px 16px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
           <div>
-            <div class="mp-m">Mensualidad 4 · <span style="color:var(--gold);">Diciembre</span></div>
+            <div class="mp-m">Mensualidad 4 · <span style="color:var(--blue-bright);">Diciembre</span></div>
             <div style="font-size:11px;color:var(--t3);margin-top:3px;">Cubre: 16 nov – 12 dic</div>
           </div>
           <div style="text-align:right;flex-shrink:0;">
@@ -692,6 +696,245 @@
       </div>
     </div>
     <div class="info-box">⚠️ <strong>Importante:</strong> Las mensualidades deben quedar cubiertas previamente al mes de entrenamiento en curso.</div>
+  </div>
+
+  <!-- Disciplinas -->
+  <div class="section" style="padding-top:28px;">
+
+    <!-- Bloque emocional -->
+    <div style="
+      background: linear-gradient(135deg, rgba(200,151,58,0.08) 0%, rgba(90,160,255,0.06) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 20px 20px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    ">
+      <div style="position:absolute;top:-20px;right:-20px;font-size:80px;opacity:0.05;pointer-events:none;">🏆</div>
+      <div style="
+        font-size: 11px; font-weight: 700;
+        letter-spacing: .15em; text-transform: uppercase;
+        color: var(--blue-bright); margin-bottom: 10px;
+      ">✦ Nuestra filosofía</div>
+      <div style="
+        font-size: 15px; font-weight: 400;
+        color: var(--t1); line-height: 1.7;
+        font-style: italic;
+      ">"En Club Borregos buscamos que cada alumno desarrolle <span style="color:var(--blue-bright);font-style:normal;font-weight:700;">disciplina, seguridad, amistades</span> y amor por el deporte en un ambiente positivo y formativo."</div>
+    </div>
+
+    <div class="section-label">Nuestras disciplinas</div>
+    <div style="font-size:13px;color:var(--t2);margin-top:-8px;margin-bottom:18px;line-height:1.5;">Los grupos están organizados por edad y/o nivel deportivo según cada disciplina.</div>
+
+    <!-- Card Basquetbol -->
+    <div style="
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+      animation: fadeUp .4s ease both;
+    ">
+      <div style="
+        background: linear-gradient(135deg, rgba(200,151,58,0.15) 0%, transparent 60%);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 18px;
+        display: flex; align-items: center; gap: 14px;
+      ">
+        <div style="
+          width: 48px; height: 48px; border-radius: 14px;
+          background: var(--gold-dim); border: 1px solid var(--gold-border);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 24px; flex-shrink: 0;
+        ">🏀</div>
+        <div>
+          <div style="font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -.01em;">Basquetbol</div>
+          <div style="font-size: 12px; color: var(--t2); margin-top: 2px; line-height: 1.4;">Desarrollamos coordinación, estrategia, trabajo en equipo y confianza dentro y fuera de la cancha.</div>
+        </div>
+      </div>
+      <div style="padding: 14px 18px; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Grupo A -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+          display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        ">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo A <span style="color:var(--t3);font-weight:400;">· 12–14 años</span></div>
+            <div style="font-size: 12px; color: var(--t2);">Lunes y miércoles</div>
+          </div>
+          <div style="
+            background: var(--gold-dim); border: 1px solid var(--gold-border);
+            border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+          ">
+            <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+          </div>
+        </div>
+        <!-- Grupo B -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+          display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        ">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo B <span style="color:var(--t3);font-weight:400;">· 7–11 años</span></div>
+            <div style="font-size: 12px; color: var(--t2);">Martes y jueves</div>
+          </div>
+          <div style="
+            background: var(--gold-dim); border: 1px solid var(--gold-border);
+            border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+          ">
+            <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Voleibol -->
+    <div style="
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+      animation: fadeUp .4s ease .1s both;
+    ">
+      <div style="
+        background: linear-gradient(135deg, rgba(90,160,255,0.12) 0%, transparent 60%);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 18px;
+        display: flex; align-items: center; gap: 14px;
+      ">
+        <div style="
+          width: 48px; height: 48px; border-radius: 14px;
+          background: var(--blue-dim); border: 1px solid var(--blue-border);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 24px; flex-shrink: 0;
+        ">🏐</div>
+        <div>
+          <div style="font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -.01em;">Voleibol</div>
+          <div style="font-size: 12px; color: var(--t2); margin-top: 2px; line-height: 1.4;">Entrenamientos enfocados en técnica, comunicación y desarrollo deportivo según el nivel de cada alumno.</div>
+        </div>
+      </div>
+      <div style="padding: 14px 18px; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Grupo A -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+        ">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom: 6px;">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo A <span style="color:var(--blue);font-weight:600;font-size:11px;background:var(--blue-dim);border:1px solid var(--blue-border);padding:2px 8px;border-radius:6px;margin-left:4px;">Avanzados</span></div>
+              <div style="font-size: 12px; color: var(--t2);">Lunes y miércoles</div>
+            </div>
+            <div style="
+              background: var(--gold-dim); border: 1px solid var(--gold-border);
+              border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+            ">
+              <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+            </div>
+          </div>
+          <div style="font-size: 11px; color: var(--t3); font-style: italic;">Para alumnos con experiencia previa en voleibol.</div>
+        </div>
+        <!-- Grupo B -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+        ">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom: 6px;">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo B <span style="color:var(--green);font-weight:600;font-size:11px;background:var(--green-dim);border:1px solid var(--green-border);padding:2px 8px;border-radius:6px;margin-left:4px;">Principiantes</span></div>
+              <div style="font-size: 12px; color: var(--t2);">Martes y jueves</div>
+            </div>
+            <div style="
+              background: var(--gold-dim); border: 1px solid var(--gold-border);
+              border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+            ">
+              <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+            </div>
+          </div>
+          <div style="font-size: 11px; color: var(--t3); font-style: italic;">Ideal para quienes desean iniciar y aprender fundamentos desde cero.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Tochito -->
+    <div style="
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+      animation: fadeUp .4s ease .2s both;
+    ">
+      <div style="
+        background: linear-gradient(135deg, rgba(52,199,89,0.1) 0%, transparent 60%);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 18px;
+        display: flex; align-items: center; gap: 14px;
+      ">
+        <div style="
+          width: 48px; height: 48px; border-radius: 14px;
+          background: var(--green-dim); border: 1px solid var(--green-border);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 24px; flex-shrink: 0;
+        ">🏈</div>
+        <div>
+          <div style="font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -.01em;">Tochito</div>
+          <div style="font-size: 12px; color: var(--t2); margin-top: 2px; line-height: 1.4;">Una disciplina dinámica y divertida que fortalece velocidad, agilidad y trabajo en equipo.</div>
+        </div>
+      </div>
+      <div style="padding: 14px 18px; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Grupo A -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+          display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        ">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo A <span style="color:var(--t3);font-weight:400;">· 7–10 años</span></div>
+            <div style="font-size: 12px; color: var(--t2);">Lunes y miércoles</div>
+          </div>
+          <div style="
+            background: var(--gold-dim); border: 1px solid var(--gold-border);
+            border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+          ">
+            <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+          </div>
+        </div>
+        <!-- Grupo B -->
+        <div style="
+          background: var(--bg3);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+          display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        ">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px;">Grupo B <span style="color:var(--t3);font-weight:400;">· 11–14 años</span></div>
+            <div style="font-size: 12px; color: var(--t2);">Martes y jueves</div>
+          </div>
+          <div style="
+            background: var(--gold-dim); border: 1px solid var(--gold-border);
+            border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0;
+          ">
+            <div style="font-size: 12px; font-weight: 800; color: var(--blue-bright); white-space: nowrap;">6:00 – 7:30 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Asuetos -->
@@ -710,6 +953,23 @@
         <div class="asueto-date">Lunes 16 de noviembre</div>
         <div class="asueto-name">Día de la Revolución Mexicana</div>
       </div>
+    </div>
+  </div>
+
+  <!-- Contacto WhatsApp -->
+  <div style="margin:24px 16px 0;">
+    <div style="
+      background:var(--bg2);
+      border:1px solid var(--blue-border);
+      border-radius:var(--radius);
+      padding:24px 20px; text-align:center;
+      background-image:radial-gradient(ellipse at 50% 0%, rgba(0,61,165,0.15) 0%, transparent 55%);
+    ">
+      <img src="logo_blancoClubBorregos.png" alt="Club Borregos" style="width:48px;height:48px;object-fit:contain;margin-bottom:12px;opacity:.85;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:6px;">¿Tienes dudas?</div>
+      <div style="font-size:18px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.2;">Contáctanos<br>por WhatsApp</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:18px;line-height:1.5;">Estamos para ayudarte con cualquier pregunta sobre reinscripciones, pagos o uniformes.</div>
+      <a href="https://wa.me/525654324415?text=Hola%2C%20tengo%20una%20duda%20sobre%20las%20reinscripciones%20de%20Club%20Borregos%20Santa%20Anita" target="_blank" style="display:block;width:100%;background:var(--blue);color:var(--white);border:none;border-radius:50px;font-size:15px;font-weight:700;padding:16px;text-decoration:none;box-shadow:0 8px 24px rgba(0,61,165,0.45);">Escribir por WhatsApp 💬</a>
     </div>
   </div>
 
